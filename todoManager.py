@@ -15,6 +15,7 @@ Todo is a dictionary with the following keys
 """
 
 import json
+import datetime
 
 
 class TodoManager:
@@ -178,7 +179,12 @@ class TodoManager:
         return 0
 
     def new_todo(
-        self, collection_id, todo_title, todo_message, todo_is_completed=False
+        self,
+        collection_id,
+        todo_title,
+        todo_message,
+        todo_reminder=None,
+        todo_is_completed=False,
     ):
         """
         Adds a new todo to a given collection in the databse
@@ -187,6 +193,7 @@ class TodoManager:
             collection_id: int => index of the collection to which the new todo is added
             todo_title: string => title of the new todo
             todo_message: string => message of the new todo
+            todo_reminder: datetime object => time to remind the todo
             todo_is_completed: bool => if the new todo is completed. By default it is false
 
         Return:
@@ -200,6 +207,8 @@ class TodoManager:
                 "title": todo_title,
                 "message": todo_message,
                 "is_completed": todo_is_completed,
+                "date_reminder": todo_reminder,
+                "date_created": datetime.datetime.now(),
             }
         )
 
