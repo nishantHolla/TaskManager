@@ -1,4 +1,5 @@
 from todoManager import TodoManager
+import datetime
 
 tm = TodoManager("./db.json")
 tm.debugPrint()
@@ -34,7 +35,13 @@ tm.write_DB()
 print()
 
 print("Adding a new todo ... ")
-tm.new_todo(0, "New todo", "New todo message", False)
+tm.new_todo(
+    0,
+    "New todo",
+    "New todo message",
+    datetime.datetime.now() + datetime.timedelta(1),
+    False,
+)
 tm.debugPrint()
 tm.write_DB()
 print()
