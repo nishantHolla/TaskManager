@@ -1,0 +1,29 @@
+[
+    {
+        "name": "Collection 0",
+        "todos": [
+            {
+                "title": "Todo 4",
+                "message": "message 4",
+                "is_completed": true,
+                "date_reminder": "2023-11-25 10:57:45",
+                "date_created": "2023-11-24 10:57:45"
+            },
+            {
+                "title": "New todo",
+                "message": "New todo message",
+                "is_completed": false,
+                "date_reminder": "2023-11-25 11:16:45",
+                "date_created": "2023-11-24 11:16:45"
+            }
+        ]
+    },
+    {
+        "name": "Collection 2",
+        "todos": []
+    },
+    {
+        "name": "Collection 1",
+        "todos": []
+    }
+]

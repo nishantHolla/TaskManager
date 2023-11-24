@@ -1,7 +1,7 @@
 from todoManager import TodoManager
 import datetime
 
-tm = TodoManager("./db.json")
+tm = TodoManager("./users/user1.json")
 tm.debugPrint()
 
 print("Adding a new collection ...")
@@ -46,6 +46,12 @@ tm.debugPrint()
 tm.write_DB()
 print()
 
+tm.new_todo(
+    0,
+    "New todo",
+    "New todo message",
+)
+
 print("Getting todos ... ")
 print(tm.get_todos(1))
 tm.write_DB()
@@ -62,8 +68,8 @@ tm.debugPrint()
 tm.write_DB()
 print()
 
-# print("Removing todo ...")
-# tm.remove_todo(0, -1)
-# tm.debugPrint()
-# tm.write_DB()
+print("Removing todo ...")
+tm.remove_todo(0, -1)
+tm.debugPrint()
+tm.write_DB()
 print()
