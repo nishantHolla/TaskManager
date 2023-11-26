@@ -126,7 +126,7 @@ class Ui_MainWindow(object):
         self.pushButton_3.setFont(font)
         self.pushButton_3.setObjectName("pushButton_3")
         self.listWidget = QtWidgets.QListWidget(parent=self.widget)
-        self.listWidget.setGeometry(QtCore.QRect(130, 340, 771, 421))
+        self.listWidget.setGeometry(QtCore.QRect(130, 390, 771, 421))
         self.listWidget.setStyleSheet("background-color:rgba(0, 0, 0, 0);\n"
 "border:none;\n"
 "border-bottom:2px solid rgba(105, 118, 132, 255);\n"
@@ -176,8 +176,19 @@ class Ui_MainWindow(object):
         self.lineEdit = QtWidgets.QLineEdit(parent=self.widget)
         self.lineEdit.setGeometry(QtCore.QRect(130, 270, 551, 41))
         self.lineEdit.setText("")
+        self.lineEdit.setPlaceholderText("Enter the Task")
         self.lineEdit.setObjectName("lineEdit")
         self.lineEdit.setStyleSheet("background-color:rgba(0, 0, 0, 0);\n"
+"border:none;\n"
+"border-bottom:2px solid rgba(105, 118, 132, 255);\n"
+"color:rgba(255, 255, 255, 230);\n"
+"padding-bottom:7px;")
+        self.lineEdit_2 = QtWidgets.QLineEdit(parent=self.widget)
+        self.lineEdit_2.setGeometry(QtCore.QRect(130, 330, 771, 41))
+        self.lineEdit_2.setText("")
+        self.lineEdit_2.setPlaceholderText("Enter the description of the task")
+        self.lineEdit_2.setObjectName("lineEdit")
+        self.lineEdit_2.setStyleSheet("background-color:rgba(0, 0, 0, 0);\n"
 "border:none;\n"
 "border-bottom:2px solid rgba(105, 118, 132, 255);\n"
 "color:rgba(255, 255, 255, 230);\n"
@@ -245,21 +256,23 @@ class Ui_MainWindow(object):
         input_to_do = self.lineEdit.text()
         # Receives the date and the time.
         task_datetime = self.dateTimeEdit.dateTime()
+        # Receives the description of the task from the linEdit2
+        description_task = self.lineEdit_2.text()
 
-        item1 = f"{input_to_do} - {task_datetime.toString('dd-MM-yyyy hh:mm A')}"
-
+        # Concatinates the task name and the time and the description of the task
+        item1 = f"{input_to_do} - {task_datetime.toString('dd-MM-yyyy hh:mm A')} {chr(10)} {description_task}"
         item = QtWidgets.QListWidgetItem(item1)
 
-            # Adding a checkbox before the task so user can mark it as done.
+        # Adding a checkbox before the task so user can mark it as done.
         item.setFlags(item.flags() | QtCore.Qt.ItemFlag.ItemIsUserCheckable)
 
-            # Checkbox needs to be set as unchecked when the task is added into the listViewWidget
+        # Checkbox needs to be set as unchecked when the task is added into the listViewWidget
         item.setCheckState(Qt.CheckState.Unchecked)
 
-        #     Adds the item into the listviewWidget
+        # Adds the item into the listviewWidget
         self.listWidget.addItem(item)
 
-
+        
 
 
     # Clears all the items from the list
