@@ -53,23 +53,13 @@ class Ui_MainWindow(object):
 "QPushButton#pushButton:hover{\n"
 "    background-color: qlinegradient(spread:pad, x1:0, y1:0,505682, x2:1, y2:0.477, stop:0 rgba(40, 67, 98, 219), stop:1 rgba(105, 118, 132, 226));\n"
 "}\n"
-"QPushButton#pushButton:pressed{\n"
-"    padding-left:5px;\n"
-"    padding:top;\n"
-"    background-color:rgba(105, 118, 132, 200);\n"
-"}\n"
 "QPushButton#pushButton_2, #pushButton_3, #pushButton_4, #pushButton_6, #pushButton_7{\n"
 "    background-color: rgba(0, 0, 0, 0);\n"
 "    color:rgba(85, 98, 112, 255);\n"
 "}\n"
 "QPushButton#pushButton_2:hover, #pushButton_3:hover, #pushButton_4:hover, #pushButton_6:hover, #pushButton_7:hover{\n"
 "    color: rgba(155, 168, 182, 200);\n"
-"}\n"
-"QPushButton#pushButton_2:pressed, #pushButton_3:pressed, #pushButton_4:pressed, #pushButton_6:pressed, #pushButton_7:pressed{\n"
-"    padding-left:5px;\n"
-"    padding:top;\n"
-"    background-color:rgba(115, 128, 142, 255);\n"
-"}")
+"}\n")
         self.widget.setObjectName("widget")
         self.label = QtWidgets.QLabel(parent=self.widget)
         self.label.setGeometry(QtCore.QRect(40, 40, 940, 780))
@@ -119,15 +109,10 @@ class Ui_MainWindow(object):
 "QPushButton#pushButton:hover{\n"
 "    background-color: qlineargradient(spread:pad, x1:0.364, y1:1, x2:1, y2:1, stop:0 rgba(122, 83, 167, 255), stop:1 rgba(239, 167, 252, 255));\n"
 "}\n"
-"QPushButton#pushButton:pressed{\n"
-"    padding-left:5px;\n"
-"    padding-top:5px;\n"
-"    background-color:rgba(239, 167, 252, 200);\n"
-"}\n"
 "")
         self.pushButton.setObjectName("pushButton")
         self.pushButton_5 = QtWidgets.QPushButton(parent=self.widget)
-        self.pushButton_5.setGeometry(QtCore.QRect(380, 210, 221, 41))
+        self.pushButton_5.setGeometry(QtCore.QRect(400, 210, 221, 41))
         font = QtGui.QFont()
         font.setFamily("Corbel")
         font.setPointSize(15)
@@ -141,11 +126,6 @@ class Ui_MainWindow(object):
 "QPushButton#pushButton_5:hover{\n"
 "    background-color: qlineargradient(spread:pad, x1:0.364, y1:1, x2:1, y2:1, stop:0 rgba(122, 83, 167, 255), stop:1 rgba(239, 167, 252, 255));\n"
 "}\n"
-"QPushButton#pushButton_5:pressed{\n"
-"    padding-left:5px;\n"
-"    padding-top:5px;\n"
-"    background-color:rgba(239, 167, 252, 200);\n"
-"}\n"
 "")
         self.pushButton_5.setObjectName("pushButton_5")
         self.pushButton_3 = QtWidgets.QPushButton(parent=self.widget)
@@ -157,7 +137,7 @@ class Ui_MainWindow(object):
         self.pushButton_3.setFont(font)
         self.pushButton_3.setObjectName("pushButton_3")
         self.pushButton_7 = QtWidgets.QPushButton(parent=self.widget)
-        self.pushButton_7.setGeometry(QtCore.QRect(630, 210, 261, 41))
+        self.pushButton_7.setGeometry(QtCore.QRect(670, 210, 221, 41))
         font = QtGui.QFont()
         font.setFamily("Corbel")
         font.setPointSize(15)
@@ -168,7 +148,7 @@ class Ui_MainWindow(object):
 "    color:rgba(255, 255, 255, 210);\n"
 "    border-radius:5px;\n"
 "}\n"
-"QPushButton#pushButton_7:hover{\n"
+"QPushButton#pushButton_7s:hover{\n"
 "    background-color: qlineargradient(spread:pad, x1:0.364, y1:1, x2:1, y2:1, stop:0 rgba(122, 83, 167, 255), stop:1 rgba(239, 167, 252, 255));\n"
 "}\n"
 "")
@@ -176,8 +156,7 @@ class Ui_MainWindow(object):
         self.listWidget = QtWidgets.QListWidget(parent=self.widget)
         self.listWidget.setGeometry(QtCore.QRect(130, 340, 761, 421))
         self.listWidget.setObjectName("listWidget")
-        self.listWidget.setStyleSheet("background : transparent;\n"
-"color:rgba(255, 255, 255, 210);\n")
+        self.listWidget.setStyleSheet("background : transparent")
         #self.listWidget.setStyleSheet("QListWidget :: item {textlign: centrer; }")
         #self.listWidget.setStyleSheet("QListWidget::item { text-align: center; background : transparent; }")
         font = QtGui.QFont()
@@ -192,10 +171,6 @@ class Ui_MainWindow(object):
 "border-bottom:2px solid rgba(105, 118, 132, 255);\n"
 "color:rgba(255, 255, 255, 230);\n"
 "padding-bottom:7px;")
-        font = QtGui.QFont()
-        font.setFamily("corbel")
-        font.setPointSize(18)
-        self.lineEdit.setFont(font)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1102, 21))
@@ -215,6 +190,7 @@ class Ui_MainWindow(object):
 
         # Takes the collection name as an item
         item = QtWidgets.QListWidgetItem(input_collection)
+        item.setText("• " + input_collection)    # Using unicode bullet character
 
         # Adding a checkbox before the collection in the listWidget
         #item.setFlags(item.flags() | QtCore.Qt.ItemFlag.ItemIsUserCheckable)
@@ -234,12 +210,12 @@ class Ui_MainWindow(object):
         # Deletes the row that has been selected.
         self.listWidget.takeItem(clicked)
 
-    # Connects the collection to its corresponding tasks page.
-    def connect_collectin(self):
+
+    # Function to set the task as completed while clicking on the checkbox
+    def connect_collection(self):
         pass
     
-    def prev_screen(self):
-        pass
+
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -252,8 +228,7 @@ class Ui_MainWindow(object):
         self.pushButton_3.setText(_translate("MainWindow", "X"))
         self.pushButton_3.clicked.connect(QCoreApplication.instance().quit)
         self.pushButton_7.setText(_translate("MainWindow", "Open the Selected Collection"))
-        #self.pushButton_7.clicked.connect(con_other_window)
-
+        self.pushButton_7.clicked.connect(self.connect_collection)
 
 
 if __name__ == "__main__":
@@ -264,3 +239,4 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec())
+
