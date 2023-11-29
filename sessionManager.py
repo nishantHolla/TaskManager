@@ -77,8 +77,8 @@ class SessionManager:
 
         try:
             self.ph.verify(
-                self.users_data["users"][user_name]["password"], user_password
-            )
+                    self.users_data["users"][user_name]["password"], user_password
+                    )
         except Exception:
             return 3
 
@@ -106,8 +106,8 @@ class SessionManager:
 
         try:
             self.ph.verify(
-                self.users_data["users"][user_name]["password"], user_password
-            )
+                    self.users_data["users"][user_name]["password"], user_password
+                    )
         except Exception:
             return 3
 
