@@ -25,6 +25,24 @@
     </property>
     <layout class="QVBoxLayout" name="collectionMainLayout">
      <item>
+      <widget class="QLabel" name="errorLabel">
+       <property name="font">
+        <font>
+         <pointsize>20</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: &quot;red&quot;;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="collectionBackButton">
        <property name="font">
         <font>

@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -29,6 +32,27 @@
      </rect>
     </property>
     <layout class="QVBoxLayout" name="taskMainLayout">
+     <item>
+      <widget class="QLabel" name="errorLabel">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>20</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: &quot;red&quot;;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
      <item>
       <widget class="QPushButton" name="taskBackButton">
        <property name="font">
