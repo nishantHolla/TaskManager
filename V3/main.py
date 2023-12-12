@@ -1,4 +1,6 @@
 from PyQt5 import QtWidgets as qtw
+from PyQt5 import QtCore
+from PyQt5.QtCore import *
 
 
 from sessionManager import SessionManager
@@ -12,6 +14,9 @@ class MainWindow(qtw.QMainWindow):
         super().__init__()
         loginUi.show(self)
         self.sessionManager = SessionManager()
+        self.setFixedSize(600, 800)
+        self.setWindowFlags(Qt.WindowType.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground)
 
     def showWindow(self, windowName):
 
@@ -31,6 +36,8 @@ class MainWindow(qtw.QMainWindow):
 
 if __name__ == '__main__':
     app = qtw.QApplication([])
+
     window = MainWindow()
     window.show()
+
     app.exec_()

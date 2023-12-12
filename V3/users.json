@@ -9,5 +9,5 @@
             "password": "$argon2id$v=19$m=65536,t=3,p=4$F+DThFELKD2EiKmW8wX0lg$D8mJmKMvdsz9Jxhh9vhuW95duQ5vV27cjgkH1aEnJGw"
         }
     },
-    "current_user": ""
+    "current_user": "nishant"
 }

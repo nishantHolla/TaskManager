@@ -76,6 +76,9 @@
          <pointsize>20</pointsize>
         </font>
        </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
+       </property>
        <property name="placeholderText">
         <string>Password</string>
        </property>
@@ -87,6 +90,9 @@
         <font>
          <pointsize>20</pointsize>
         </font>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
        </property>
        <property name="placeholderText">
         <string>Confirm Password</string>
@@ -120,6 +126,9 @@
      <font>
       <pointsize>12</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Already have an account?</string>
