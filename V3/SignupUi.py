@@ -1,5 +1,7 @@
 from PyQt5.uic import loadUi
+from PyQt5.QtGui import QIcon
 from todoManager import TodoManager
+import sys
 
 class SignupUi:
     def signup(self, parent):
@@ -8,39 +10,43 @@ class SignupUi:
         confirmPassword = parent.signupConfirmPasswordLineEdit.text()
 
         if (username == ''):
-            parent.errorLabel.setText('Enter a username')
+            parent.setError('Enter a username.')
             return
 
         if (password == ''):
-            parent.errorLabel.setText('Enter a password')
+            parent.setError('Enter a password.')
             return
 
         if (confirmPassword == ''):
-            parent.errorLabel.setText('Confirm your password')
+            parent.setError('Confirm your password.')
             return
 
         if (password != confirmPassword):
-            parent.errorLabel.setText('Passwords do not match')
+            parent.setError('Passwords do not match.')
             return
 
         code = parent.sessionManager.new_user(username, password)
         parent.todoManager = TodoManager(f'./users/{username}')
         if (code == 1):
-            parent.errorLabel.setText('Username already taken.')
+            parent.setError('Username already taken.')
             return
 
         parent.user = username
 
-        parent.errorLabel.setText('')
+        parent.setError()
         parent.showWindow('collection')
 
     def goToLoginPage(self, parent):
-        parent.errorLabel.setText('')
+        parent.setError()
         parent.showWindow('login')
 
     def show(self, parent):
-        loadUi('./QtSignup.ui', parent)
-        parent.signupSubmitButton.clicked.connect(lambda : self.signup(parent))
-        parent.loginLink.clicked.connect(lambda : self.goToLoginPage(parent))
+        loadUi('./layouts/signup.ui', parent)
+
+        parent.signupCloseButton.setIcon(QIcon('./resources/close.png'))
+        parent.signupCloseButton.clicked.connect(lambda : sys.exit(0))
+        parent.signupButton.clicked.connect(lambda : self.signup(parent))
+        parent.signupToLoginButton.clicked.connect(lambda : self.goToLoginPage(parent))
+        parent.setError()
 
 signupUi = SignupUi()

@@ -4,6 +4,7 @@ This class controls the authentication of the app.
 import json
 import argon2
 import os
+from pathlib import Path
 
 
 class SessionManager:
@@ -16,7 +17,8 @@ class SessionManager:
         Return:
             None
         """
-        self.users_file = "./database/users.json"
+        self.base_path = Path('./database/')
+        self.users_file = self.base_path / "users.json"
         self.users_data = dict()
         self.ph = argon2.PasswordHasher()
 
@@ -54,7 +56,7 @@ class SessionManager:
         user = {"name": user_name, "password": self.ph.hash(user_password)}
         self.users_data["users"][user_name] = user
 
-        with open(f"./database/users/{user_name}.json", "w") as file:
+        with open(self.base_path / 'users' / f'{user_name}.json', "w") as file:
             file.write("[]")
 
         self.write_users()
@@ -86,7 +88,7 @@ class SessionManager:
 
         self.users_data["current_user"] = ""
         del self.users_data["users"][user_name]
-        os.remove(f"./users/{user_name}.json")
+        os.remove(self.base_path / 'users' / f'{user_name}.json')
         self.write_users()
         return 0
 

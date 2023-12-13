@@ -9,33 +9,34 @@ class LoginUi:
         password = parent.loginPasswordLineEdit.text()
 
         if (username == ""):
-            parent.errorLabel.setText('Enter a username')
+            parent.setError('Enter a username.')
             return
 
         if (password == ""):
-            parent.errorLabel.setText('Enter a password')
+            parent.setError('Enter a password.')
             return
 
         code = parent.sessionManager.start_session(username, password)
         if (code == 2):
-            parent.errorLabel.setText('User not found')
+            parent.setError('User not found.')
             return
 
         if (code == 3):
-            parent.errorLabel.setText('Incorrect password')
+            parent.setError('Incorrect password.')
             return
 
         if (code != 0):
-            parent.errorLabel.setText('Something went wrong.')
+            print(code)
+            parent.setError('Something went wrong.')
             return
 
         parent.user = username
         parent.todoManager = TodoManager(f'./users/{username}.json')
-        parent.errorLabel.setText('')
+        parent.setError()
         parent.showWindow('collection')
 
     def goToSignupPage(self, parent):
-        parent.errorLabel.setText('')
+        parent.setError()
         parent.showWindow('signup')
 
     def show(self, parent):
@@ -43,7 +44,8 @@ class LoginUi:
 
         parent.loginCloseButton.setIcon(QIcon('./resources/close.png'))
         parent.loginCloseButton.clicked.connect(lambda: sys.exit(0))
-        # parent.loginSubmitButton.clicked.connect(lambda : self.login(parent))
-        # parent.signupLink.clicked.connect(lambda : self.goToSignupPage(parent))
+        parent.loginButton.clicked.connect(lambda : self.login(parent))
+        parent.loginToSignupButton.clicked.connect(lambda : self.goToSignupPage(parent))
+        parent.setError()
 
 loginUi = LoginUi()

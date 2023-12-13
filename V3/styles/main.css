@@ -7,8 +7,14 @@ QMainWindow {
 }
 
 #headerFrame,
-#loginFrame {
+#loginFrame,
+#signupFrame {
 	background: #aa9d9d9d;
+}
+
+#errorFrame {
+	background: #dc143c;
+	color: #0d0d0d;
 }
 
 #heading {
@@ -41,6 +47,38 @@ QMainWindow {
 }
 
 #loginToSignupButton {
+	background: transparent;
+	color: #0d0d0d;
+	border: none;
+	text-decoration: underline;
+}
+
+/* signup */
+
+#signupCloseButton {
+	background: transparent;
+	border: none;
+}
+
+#signupUsernameLineEdit,
+#signupPasswordLineEdit,
+#signupConfirmPasswordLineEdit {
+	background: transparent;
+	border: none;
+	color: #0d0d0d;
+	border-bottom: 2px solid #0d0d0d;
+
+}
+
+#signupButton {
+	border: none;
+	background: #cc0d0d0d;
+	color: #9d9d9d;
+	padding: 10px 20px;
+	border-radius: 10px;
+}
+
+#signupToLoginButton {
 	background: transparent;
 	color: #0d0d0d;
 	border: none;

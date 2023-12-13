@@ -16,6 +16,15 @@ class MainWindow(qtw.QMainWindow):
         loginUi.show(self)
         self.sessionManager = SessionManager()
         self.setFixedSize(800, 600)
+        self.setError()
+
+    def setError(self, error=None):
+        if not error:
+            self.errorFrame.setVisible(False)
+            return
+
+        self.errorLabel.setText(error)
+        self.errorFrame.setVisible(True)
 
     def showWindow(self, windowName):
 
