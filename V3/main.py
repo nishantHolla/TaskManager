@@ -1,4 +1,5 @@
 from PyQt5 import QtWidgets as qtw
+from PyQt5 import QtGui as qtg
 from PyQt5 import QtCore
 from PyQt5.QtCore import *
 
@@ -14,9 +15,7 @@ class MainWindow(qtw.QMainWindow):
         super().__init__()
         loginUi.show(self)
         self.sessionManager = SessionManager()
-        self.setFixedSize(600, 800)
-        self.setWindowFlags(Qt.WindowType.FramelessWindowHint)
-        self.setAttribute(Qt.WA_TranslucentBackground)
+        self.setFixedSize(800, 600)
 
     def showWindow(self, windowName):
 
@@ -34,8 +33,21 @@ class MainWindow(qtw.QMainWindow):
 
 
 
+styleFiles = [
+        './styles/main.css',
+        ]
+
 if __name__ == '__main__':
+    style = ''
+
+    for file in styleFiles:
+        file = open(file, 'r')
+        style += file.read()
+        file.close()
+
     app = qtw.QApplication([])
+    qtg.QFontDatabase.addApplicationFont('./resources/Inter.ttf')
+    app.setStyleSheet(style)
 
     window = MainWindow()
     window.show()

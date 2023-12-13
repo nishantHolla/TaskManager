@@ -1,0 +1,48 @@
+* {
+	font-family: "Inter";
+}
+
+QMainWindow {
+	border-image: url("./resources/background.jpg") 0 0 0 0 stretch stretch;
+}
+
+#headerFrame,
+#loginFrame {
+	background: #aa9d9d9d;
+}
+
+#heading {
+	background: transparent;
+	color: #0d0d0d;
+}
+
+/* login */
+
+#loginCloseButton {
+	background: transparent;
+	border: none;
+}
+
+#loginUsernameLineEdit,
+#loginPasswordLineEdit {
+	background: transparent;
+	border: none;
+	color: #0d0d0d;
+	border-bottom: 2px solid #0d0d0d;
+
+}
+
+#loginButton {
+	border: none;
+	background: #cc0d0d0d;
+	color: #9d9d9d;
+	padding: 10px 20px;
+	border-radius: 10px;
+}
+
+#loginToSignupButton {
+	background: transparent;
+	color: #0d0d0d;
+	border: none;
+	text-decoration: underline;
+}

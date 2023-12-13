@@ -16,7 +16,7 @@ class SessionManager:
         Return:
             None
         """
-        self.users_file = "./users.json"
+        self.users_file = "./database/users.json"
         self.users_data = dict()
         self.ph = argon2.PasswordHasher()
 
@@ -31,7 +31,8 @@ class SessionManager:
         Return:
             None
         """
-        self.write_users()
+        pass
+        # self.write_users()
 
     def debugPrint(self):
         print(self.users_data)
@@ -53,7 +54,7 @@ class SessionManager:
         user = {"name": user_name, "password": self.ph.hash(user_password)}
         self.users_data["users"][user_name] = user
 
-        with open(f"./users/{user_name}.json", "w") as file:
+        with open(f"./database/users/{user_name}.json", "w") as file:
             file.write("[]")
 
         self.write_users()

@@ -1,0 +1,10 @@
+
+
+QPushButton#loginCloseButton {
+	background: transparent;
+	border: none;
+}
+
+QLabel#loginHeading {
+	color: #0d0d0d;
+}

@@ -1,5 +1,7 @@
 from PyQt5.uic import loadUi
+from PyQt5.QtGui import QIcon
 from todoManager import TodoManager
+import sys
 
 class LoginUi:
     def login(self, parent):
@@ -37,8 +39,11 @@ class LoginUi:
         parent.showWindow('signup')
 
     def show(self, parent):
-        loadUi('./QtLogin.ui', parent)
-        parent.loginSubmitButton.clicked.connect(lambda : self.login(parent))
-        parent.signupLink.clicked.connect(lambda : self.goToSignupPage(parent))
+        loadUi('./layouts/login.ui', parent)
+
+        parent.loginCloseButton.setIcon(QIcon('./resources/close.png'))
+        parent.loginCloseButton.clicked.connect(lambda: sys.exit(0))
+        # parent.loginSubmitButton.clicked.connect(lambda : self.login(parent))
+        # parent.signupLink.clicked.connect(lambda : self.goToSignupPage(parent))
 
 loginUi = LoginUi()
