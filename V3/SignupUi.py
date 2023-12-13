@@ -26,7 +26,7 @@ class SignupUi:
             return
 
         code = parent.sessionManager.new_user(username, password)
-        parent.todoManager = TodoManager(f'./users/{username}')
+        parent.todoManager = TodoManager(parent.base_path / 'users' / f'{username}.json')
         if (code == 1):
             parent.setError('Username already taken.')
             return

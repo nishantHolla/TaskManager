@@ -8,12 +8,13 @@ QMainWindow {
 
 #headerFrame,
 #loginFrame,
-#signupFrame {
-	background: #aa9d9d9d;
+#signupFrame,
+#collectionsFrame {
+	background: #dd9d9d9d;
 }
 
 #errorFrame {
-	background: #dc143c;
+	background: #aadc143c;
 	color: #0d0d0d;
 }
 
@@ -83,4 +84,34 @@ QMainWindow {
 	color: #0d0d0d;
 	border: none;
 	text-decoration: underline;
+}
+
+/* collections */
+
+#collectionsBackButton {
+	background: transparent;
+	border: none;
+}
+
+#collectionsLineEdit {
+	background: transparent;
+	border: none;
+	color: #0d0d0d;
+	border-bottom: 2px solid #0d0d0d;
+}
+
+#collectionsAddButton,
+#collectionsViewButton,
+#collectionsDeleteButton {
+	border: none;
+	background: #cc0d0d0d;
+	color: #9d9d9d;
+	padding: 10px 20px;
+	border-radius: 10px;
+
+}
+
+#collectionsList {
+	background: transparent;
+	border: none;
 }

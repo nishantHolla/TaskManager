@@ -31,7 +31,7 @@ class LoginUi:
             return
 
         parent.user = username
-        parent.todoManager = TodoManager(f'./users/{username}.json')
+        parent.todoManager = TodoManager(parent.base_path / 'users' / f'{username}.json')
         parent.setError()
         parent.showWindow('collection')
 

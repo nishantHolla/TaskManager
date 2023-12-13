@@ -16,6 +16,7 @@ Todo is a dictionary with the following keys
 
 import json
 import datetime
+from pathlib import Path
 
 
 class TodoManager:
@@ -29,7 +30,7 @@ class TodoManager:
             None
         """
 
-        self.db_path = db_path
+        self.db_path = Path(db_path)
         self.DB = []
 
         if self.read_DB() != 0:

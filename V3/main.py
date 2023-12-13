@@ -1,3 +1,4 @@
+from pathlib import Path
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtGui as qtg
 from PyQt5 import QtCore
@@ -5,6 +6,7 @@ from PyQt5.QtCore import *
 
 
 from sessionManager import SessionManager
+from todoManager import TodoManager
 from LoginUi import loginUi
 from SignupUi import signupUi
 from CollectionUi import collectionUi
@@ -13,9 +15,18 @@ from TaskUi import taskUi
 class MainWindow(qtw.QMainWindow):
     def __init__(self):
         super().__init__()
-        loginUi.show(self)
+        self.setFixedSize(1200,800)
+
+        self.base_path = Path('./database')
         self.sessionManager = SessionManager()
-        self.setFixedSize(800, 600)
+
+        self.user = self.sessionManager.get_current_user()
+        if self.user != '':
+            self.todoManager = TodoManager(self.base_path / 'users' / f'{self.user}.json')
+            collectionUi.show(self)
+        else:
+            loginUi.show(self)
+
         self.setError()
 
     def setError(self, error=None):

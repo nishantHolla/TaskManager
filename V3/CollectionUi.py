@@ -1,26 +1,35 @@
+from PyQt5.QtGui import QIcon
 from PyQt5.uic import loadUi
 
 class CollectionUi:
     def addCollection(self, parent):
-        collectionName = parent.collectionLineEdit.text()
+        collectionName = parent.collectionsLineEdit.text()
         parent.todoManager.new_collection(collectionName)
-        parent.collectionList.addItem(collectionName)
+        parent.collectionsList.addItem(collectionName)
+        parent.collectionsLineEdit.setText('')
+        parent.setError()
 
     def deleteCollection(self, parent):
-        current_item = parent.collectionList.currentItem()
-        if not current_item: return
+        current_item = parent.collectionsList.currentItem()
+        if not current_item:
+            parent.setError('Select a collection before deletion.')
+            return
 
-        item_index = parent.collectionList.row(current_item)
+        item_index = parent.collectionsList.row(current_item)
         parent.todoManager.remove_collection(item_index)
-        parent.collectionList.takeItem(item_index)
+        parent.collectionsList.takeItem(item_index)
+        parent.setError()
 
     def viewCollection(self, parent):
-        current_item = parent.collectionList.currentItem()
-        if not current_item: return
+        current_item = parent.collectionsList.currentItem()
+        if not current_item:
+            parent.setError('Select the collection to view.')
+            return
 
-        item_index = parent.collectionList.row(current_item)
+        item_index = parent.collectionsList.row(current_item)
         parent.collectionIndex = item_index
         parent.showWindow('task')
+        parent.setError()
 
     def logout(self, parent):
         parent.sessionManager.end_session()
@@ -28,15 +37,17 @@ class CollectionUi:
         parent.showWindow('login')
 
     def show(self, parent):
-        loadUi('./QtCollection.ui', parent)
+        loadUi('./layouts/collections.ui', parent)
 
-        parent.collectionAddButton.clicked.connect(lambda : self.addCollection(parent))
-        parent.collectionDeleteButton.clicked.connect(lambda : self.deleteCollection(parent))
-        parent.collectionViewButton.clicked.connect(lambda : self.viewCollection(parent))
-        parent.collectionBackButton.clicked.connect(lambda : self.logout(parent))
+        parent.collectionsBackButton.setIcon(QIcon('./resources/back.png'))
+        parent.collectionsBackButton.clicked.connect(lambda : self.logout(parent))
+        parent.collectionsAddButton.clicked.connect(lambda : self.addCollection(parent))
+        parent.collectionsDeleteButton.clicked.connect(lambda : self.deleteCollection(parent))
+        parent.collectionsViewButton.clicked.connect(lambda : self.viewCollection(parent))
 
         collections = parent.todoManager.get_collections()
         for collection in collections:
-            parent.collectionList.addItem(collection['name'])
+            parent.collectionsList.addItem(collection['name'])
+        parent.setError()
 
 collectionUi = CollectionUi()

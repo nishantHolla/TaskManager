@@ -162,3 +162,15 @@ class SessionManager:
         data = json.dumps(self.users_data, indent=4)
         with open(self.users_file, "w") as file:
             file.write(data)
+
+    def get_current_user(self):
+        '''
+        Get current user
+
+        Parameters:
+            None
+
+        Return:
+            username: string => current user
+        '''
+        return self.users_data['current_user'] or ''
