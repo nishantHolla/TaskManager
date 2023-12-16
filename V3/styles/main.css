@@ -1,5 +1,6 @@
 * {
 	font-family: "Inter";
+	color: #cdcdcd;
 }
 
 QMainWindow {
@@ -9,8 +10,18 @@ QMainWindow {
 #headerFrame,
 #loginFrame,
 #signupFrame,
-#collectionsFrame {
-	background: #dd9d9d9d;
+#collectionsFrame,
+#taskFrame,
+#accountFrame {
+	background: #dd0d0d0d;
+}
+
+#loginFrame,
+#signupFrame,
+#collectionsFrame,
+#taskFrame,
+#accountFrame {
+	border-radius: 10px;
 }
 
 #errorFrame {
@@ -20,7 +31,7 @@ QMainWindow {
 
 #heading {
 	background: transparent;
-	color: #0d0d0d;
+	color: #cdcdcd;
 }
 
 /* login */
@@ -34,22 +45,23 @@ QMainWindow {
 #loginPasswordLineEdit {
 	background: transparent;
 	border: none;
-	color: #0d0d0d;
-	border-bottom: 2px solid #0d0d0d;
+	color: #cdcdcd;
+	border-bottom: 2px solid #cdcdcd;
+	margin: 10px;
 
 }
 
 #loginButton {
 	border: none;
-	background: #cc0d0d0d;
-	color: #9d9d9d;
+	background: #cccdcdcd;
+	color: #0d0d0d;
 	padding: 10px 20px;
 	border-radius: 10px;
 }
 
 #loginToSignupButton {
 	background: transparent;
-	color: #0d0d0d;
+	color: #cdcdcd;
 	border: none;
 	text-decoration: underline;
 }
@@ -65,30 +77,32 @@ QMainWindow {
 #signupPasswordLineEdit,
 #signupConfirmPasswordLineEdit {
 	background: transparent;
+	margin: 10px;
 	border: none;
-	color: #0d0d0d;
-	border-bottom: 2px solid #0d0d0d;
+	color: #cdcdcd;
+	border-bottom: 2px solid #cdcdcd;
 
 }
 
 #signupButton {
 	border: none;
-	background: #cc0d0d0d;
-	color: #9d9d9d;
+	background: #cccdcdcd;
+	color: #0d0d0d;
 	padding: 10px 20px;
 	border-radius: 10px;
 }
 
 #signupToLoginButton {
 	background: transparent;
-	color: #0d0d0d;
+	color: #cdcdcd;
 	border: none;
 	text-decoration: underline;
 }
 
 /* collections */
 
-#collectionsBackButton {
+#collectionsBackButton,
+#collectionsAccountButton {
 	background: transparent;
 	border: none;
 }
@@ -96,16 +110,16 @@ QMainWindow {
 #collectionsLineEdit {
 	background: transparent;
 	border: none;
-	color: #0d0d0d;
-	border-bottom: 2px solid #0d0d0d;
+	color: #cdcdcd;
+	border-bottom: 2px solid #cdcdcd;
 }
 
 #collectionsAddButton,
 #collectionsViewButton,
 #collectionsDeleteButton {
 	border: none;
-	background: #cc0d0d0d;
-	color: #9d9d9d;
+	background: #cccdcdcd;
+	color: #0d0d0d;
 	padding: 10px 20px;
 	border-radius: 10px;
 
@@ -114,4 +128,64 @@ QMainWindow {
 #collectionsList {
 	background: transparent;
 	border: none;
+}
+
+/* account */
+
+#accountBackButton {
+	background: transparent;
+	border: none;
+}
+
+#accountCurrentPasswordLineEdit,
+#accountNewPasswordLineEdit,
+#accountConfirmPasswordLineEdit,
+#accountDeletePasswordLineEdit {
+	background: transparent;
+	border: none;
+	color: #cdcdcd;
+	border-bottom: 2px solid #cdcdcd;
+	margin: 10px;
+
+}
+
+#accountChangePasswordButton,
+#accountDeleteButton {
+	border: none;
+	background: #cccdcdcd;
+	color: #0d0d0d;
+	padding: 10px 20px;
+	border-radius: 10px;
+
+}
+
+/* tasks */
+
+#taskBackButton {
+	background: transparent;
+	border: none;
+}
+
+#taskTitleLineEdit,
+#taskBodyLineEdit {
+	background: transparent;
+	border: none;
+	color: #cdcdcd;
+	border-bottom: 2px solid #cdcdcd;
+}
+
+#taskReminderTime {
+	background: transparent;
+	border: 1px solid transparent;
+}
+
+#taskAddButton,
+#taskDeleteButton,
+#taskDeleteAllButton {
+	border: none;
+	background: #cccdcdcd;
+	color: #0d0d0d;
+	padding: 10px 20px;
+	border-radius: 10px;
+
 }

@@ -11,6 +11,7 @@ from LoginUi import loginUi
 from SignupUi import signupUi
 from CollectionUi import collectionUi
 from TaskUi import taskUi
+from AccountUi import accountUi
 
 class MainWindow(qtw.QMainWindow):
     def __init__(self):
@@ -50,6 +51,10 @@ class MainWindow(qtw.QMainWindow):
 
         elif (windowName == "task"):
             taskUi.show(self)
+
+        elif (windowName == "account"):
+            accountUi.show(self)
+
 
 
 

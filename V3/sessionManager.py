@@ -55,9 +55,30 @@ class SessionManager:
 
         user = {"name": user_name, "password": self.ph.hash(user_password)}
         self.users_data["users"][user_name] = user
+        self.users_data['current_user'] = user
 
         with open(self.base_path / 'users' / f'{user_name}.json', "w") as file:
             file.write("[]")
+
+        self.write_users()
+        return 0
+
+    def change_password(self, user_name, new_password):
+        '''
+            Change the password of a  user
+
+            Parameters:
+                user_name: string => username of the user to change the password of
+                new_password: string => new password of the user
+
+            Return:
+                exit_code: integer => 0 if successful change else non zero int
+        '''
+        if user_name not in self.users_data["users"]:
+            return 1
+
+        user = {"name": user_name, "password": self.ph.hash(new_password)}
+        self.users_data["users"][user_name] = user
 
         self.write_users()
         return 0
@@ -119,6 +140,33 @@ class SessionManager:
         self.users_data["current_user"] = user_name
         self.write_users()
         return 0
+
+    def verify_password(self, user_name, user_password):
+        '''
+            Verify given password
+
+            Parameters:
+                user_name : string => username
+                user_password  : string => password to verify
+
+            Return:
+                exitCode : integer => 0 if valid password else non zero int
+        '''
+        if self.users_data["current_user"] == "":
+            return 1
+
+        if user_name not in self.users_data["users"]:
+            return 2
+
+        try:
+            self.ph.verify(
+                    self.users_data["users"][user_name]["password"], user_password
+                    )
+        except Exception:
+            return 3
+
+        return 0
+
 
     def end_session(self):
         """

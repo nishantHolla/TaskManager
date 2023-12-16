@@ -40,6 +40,10 @@ class CollectionUi:
         loadUi('./layouts/collections.ui', parent)
 
         parent.collectionsBackButton.setIcon(QIcon('./resources/back.png'))
+        parent.collectionsAccountButton.setIcon(QIcon('./resources/account.png'))
+        parent.collectionsAccountButton.setText(parent.user)
+
+        parent.collectionsAccountButton.clicked.connect(lambda : parent.showWindow('account'))
         parent.collectionsBackButton.clicked.connect(lambda : self.logout(parent))
         parent.collectionsAddButton.clicked.connect(lambda : self.addCollection(parent))
         parent.collectionsDeleteButton.clicked.connect(lambda : self.deleteCollection(parent))
