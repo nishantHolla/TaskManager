@@ -175,7 +175,7 @@
        <x>10</x>
        <y>0</y>
        <width>1171</width>
-       <height>102</height>
+       <height>80</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="headerLayout">
@@ -185,13 +185,18 @@
       <property name="rightMargin">
        <number>20</number>
       </property>
-      <item>
+      <item alignment="Qt::AlignVCenter">
        <widget class="QPushButton" name="collectionsBackButton">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>20</pointsize>
+         </font>
         </property>
         <property name="cursor">
          <cursorShape>PointingHandCursor</cursorShape>
@@ -201,7 +206,7 @@
         </property>
        </widget>
       </item>
-      <item>
+      <item alignment="Qt::AlignVCenter">
        <widget class="QLabel" name="heading">
         <property name="font">
          <font>
@@ -226,19 +231,10 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="minimumSize">
-         <size>
-          <width>50</width>
-          <height>50</height>
-         </size>
-        </property>
         <property name="font">
          <font>
           <pointsize>12</pointsize>
          </font>
-        </property>
-        <property name="cursor">
-         <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="text">
          <string/>
@@ -248,9 +244,6 @@
      </layout>
     </widget>
    </widget>
-   <zorder>headerFrame</zorder>
-   <zorder>errorFrame</zorder>
-   <zorder>collectionsFrame</zorder>
   </widget>
  </widget>
  <resources/>
