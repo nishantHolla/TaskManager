@@ -14,10 +14,11 @@ class SessionManager:
 
         Parameters:
             None
+
         Return:
             None
         """
-        self.base_path = Path('./database/')
+        self.base_path = Path("./database/")
         self.users_file = self.base_path / "users.json"
         self.users_data = dict()
         self.ph = argon2.PasswordHasher()
@@ -30,6 +31,7 @@ class SessionManager:
 
         Parameters:
             None
+
         Return:
             None
         """
@@ -48,32 +50,32 @@ class SessionManager:
             user_password: string => password of the new user
 
         Return:
-            exitCode: int => 0 if successful addition of user else non zero int
+            exit_code: int => 0 if successful addition of user else non zero int
         """
         if user_name in self.users_data["users"]:
             return 1
 
         user = {"name": user_name, "password": self.ph.hash(user_password)}
         self.users_data["users"][user_name] = user
-        self.users_data['current_user'] = user
+        self.users_data["current_user"] = user
 
-        with open(self.base_path / 'users' / f'{user_name}.json', "w") as file:
+        with open(self.base_path / "users" / f"{user_name}.json", "w") as file:
             file.write("[]")
 
         self.write_users()
         return 0
 
     def change_password(self, user_name, new_password):
-        '''
-            Change the password of a  user
+        """
+        Change the password of a  user
 
-            Parameters:
-                user_name: string => username of the user to change the password of
-                new_password: string => new password of the user
+        Parameters:
+            user_name: string => username of the user to change the password of
+            new_password: string => new password of the user
 
-            Return:
-                exit_code: integer => 0 if successful change else non zero int
-        '''
+        Return:
+            exit_code: integer => 0 if successful change else non zero int
+        """
         if user_name not in self.users_data["users"]:
             return 1
 
@@ -92,7 +94,7 @@ class SessionManager:
             user_password: string => password of the user to remove
 
         Return:
-            exitCode: int => 0 if successful removal of user else non zero int
+            exit_code: int => 0 if successful removal of user else non zero int
         """
         if user_name not in self.users_data["users"]:
             return 1
@@ -102,14 +104,14 @@ class SessionManager:
 
         try:
             self.ph.verify(
-                    self.users_data["users"][user_name]["password"], user_password
-                    )
+                self.users_data["users"][user_name]["password"], user_password
+            )
         except Exception:
             return 3
 
         self.users_data["current_user"] = ""
         del self.users_data["users"][user_name]
-        os.remove(self.base_path / 'users' / f'{user_name}.json')
+        os.remove(self.base_path / "users" / f"{user_name}.json")
         self.write_users()
         return 0
 
@@ -122,7 +124,7 @@ class SessionManager:
             user_password: string => user password
 
         Return:
-            exitCode: int => 0 if successful start of session else non zero int
+            exit_code: int => 0 if successful start of session else non zero int
         """
         if self.users_data["current_user"] != "":
             return 1
@@ -132,8 +134,8 @@ class SessionManager:
 
         try:
             self.ph.verify(
-                    self.users_data["users"][user_name]["password"], user_password
-                    )
+                self.users_data["users"][user_name]["password"], user_password
+            )
         except Exception:
             return 3
 
@@ -142,16 +144,16 @@ class SessionManager:
         return 0
 
     def verify_password(self, user_name, user_password):
-        '''
-            Verify given password
+        """
+        Verify given password
 
-            Parameters:
-                user_name : string => username
-                user_password  : string => password to verify
+        Parameters:
+            user_name : string => username
+            user_password  : string => password to verify
 
-            Return:
-                exitCode : integer => 0 if valid password else non zero int
-        '''
+        Return:
+            exit_code : integer => 0 if valid password else non zero int
+        """
         if self.users_data["current_user"] == "":
             return 1
 
@@ -160,13 +162,12 @@ class SessionManager:
 
         try:
             self.ph.verify(
-                    self.users_data["users"][user_name]["password"], user_password
-                    )
+                self.users_data["users"][user_name]["password"], user_password
+            )
         except Exception:
             return 3
 
         return 0
-
 
     def end_session(self):
         """
@@ -176,7 +177,7 @@ class SessionManager:
             None
 
         Return:
-            exitCode: int => 0 if successful end of session else non zero int
+            exit_code: int => 0 if successful end of session else non zero int
         """
         if self.users_data["current_user"] == "":
             return 1
@@ -191,6 +192,7 @@ class SessionManager:
 
         Parameters:
             None
+
         Return:
             None
         """
@@ -203,6 +205,7 @@ class SessionManager:
 
         Parameters:
             None
+
         Return:
             None
 
@@ -212,7 +215,7 @@ class SessionManager:
             file.write(data)
 
     def get_current_user(self):
-        '''
+        """
         Get current user
 
         Parameters:
@@ -220,5 +223,5 @@ class SessionManager:
 
         Return:
             username: string => current user
-        '''
-        return self.users_data['current_user'] or ''
+        """
+        return self.users_data["current_user"] or ""

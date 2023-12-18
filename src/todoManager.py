@@ -26,6 +26,7 @@ class TodoManager:
 
         Parameters:
             db_path: string => path of the database file from which the todos are loaded
+
         Return:
             None
         """
@@ -61,8 +62,9 @@ class TodoManager:
 
         Parameters:
             None
+
         Return:
-            exitCode: int => 0 if successful read else non zero int
+            exit_code: int => 0 if successful read else non zero int
 
         """
         with open(self.db_path, "r") as file:
@@ -76,8 +78,9 @@ class TodoManager:
 
         Parameters:
             None
+
         Return:
-            exitCode => 0 if successful write else non zero int
+            exit_code => 0 if successful write else non zero int
         """
         data = json.dumps(self.DB, indent=4)
         with open(self.db_path, "w") as file:
@@ -94,7 +97,7 @@ class TodoManager:
             insertioin_index: int => index at which the collection must be added. If the default value
                                      is passed (that is -1) then the collection is added to the end
         Return:
-            exitCode: int => 0 if successful addition else non zero int
+            exit_code: int => 0 if successful addition else non zero int
 
         """
         try:
@@ -149,7 +152,7 @@ class TodoManager:
             collection_id: int => index of the collection to remove
 
         Return:
-            exitCode: int => 0 if successful removal else non zero int
+            exit_code: int => 0 if successful removal else non zero int
 
         """
         if collection_id > len(self.DB):
@@ -171,7 +174,7 @@ class TodoManager:
             collection_name: string => new name of the collection
 
         Return:
-            exitCode: int => 0 if successful update else non zero int
+            exit_code: int => 0 if successful update else non zero int
         """
         if collection_id > len(self.DB):
             return 1
@@ -201,7 +204,7 @@ class TodoManager:
             todo_is_completed: bool => if the new todo is completed. By default it is false
 
         Return:
-            exitCode: int => 0 if successful addition of todo to the collection in the database else non zero int
+            exit_code: int => 0 if successful addition of todo to the collection in the database else non zero int
         """
         if collection_id > len(self.DB):
             return 1
@@ -213,7 +216,7 @@ class TodoManager:
                 "is_completed": todo_is_completed,
                 "date_reminder": todo_reminder,
                 "date_created": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                "reminded": False
+                "reminded": False,
             }
         )
 
@@ -265,7 +268,7 @@ class TodoManager:
         todo_title="",
         todo_message="",
         todo_is_completed=None,
-        reminded=None
+        reminded=None,
     ):
         """
         Update a todo
@@ -276,8 +279,9 @@ class TodoManager:
             todo_title: string => new title of the todo. If empty do not update the title
             todo_message: string => new message of the todo. If empty do not update the message
             todo_is_completed: bool => if the todo is completed or not. If None do not update the boolean
+
         Return:
-            exitCode: int => 0 if successful update else non zero int
+            exit_code: int => 0 if successful update else non zero int
         """
 
         if collection_id > len(self.DB):
@@ -297,7 +301,7 @@ class TodoManager:
             todo["is_completed"] = todo_is_completed
 
         if reminded:
-            todo['reminded'] = True
+            todo["reminded"] = True
 
         self.write_DB()
         return 0
@@ -311,7 +315,7 @@ class TodoManager:
             todo_id: int => index of the todo in the collection which is to be removed
 
         Return:
-            exitCode: int => 0 if successful removal of todo from the collection in the database else non zero int
+            exit_code: int => 0 if successful removal of todo from the collection in the database else non zero int
         """
 
         if collection_id > len(self.DB):
