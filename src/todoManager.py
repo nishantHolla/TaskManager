@@ -213,6 +213,7 @@ class TodoManager:
                 "is_completed": todo_is_completed,
                 "date_reminder": todo_reminder,
                 "date_created": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                "reminded": False
             }
         )
 
@@ -264,6 +265,7 @@ class TodoManager:
         todo_title="",
         todo_message="",
         todo_is_completed=None,
+        reminded=None
     ):
         """
         Update a todo
@@ -293,6 +295,9 @@ class TodoManager:
 
         if todo_is_completed != None:
             todo["is_completed"] = todo_is_completed
+
+        if reminded:
+            todo['reminded'] = True
 
         self.write_DB()
         return 0
