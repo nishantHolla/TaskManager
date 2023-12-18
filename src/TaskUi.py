@@ -3,17 +3,19 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QVBoxLayout
 from PyQt5.uic import loadUi
 from pyqt_checkbox_list_widget.checkBoxListWidget import CheckBoxListWidget
+from datetime import datetime
 
 class TaskUi:
-    def formatTask(self, title, body):
-        return f'{title}\n{body}'
+    def formatTask(self, title, body, addedOn):
+        return f'{title}\n{body}\nAdded on: {addedOn}'
 
     def addTask(self, parent):
         taskTitle = parent.taskTitleLineEdit.text()
         taskBody = parent.taskBodyLineEdit.toPlainText()
 
-        parent.todoManager.new_todo(parent.collectionIndex, taskTitle, taskBody)
-        parent.taskList.addItem(self.formatTask(taskTitle, taskBody))
+        time = parent.taskReminderTime.dateTime().toString("yyyy-MM-dd hh:mm:ss")
+        parent.todoManager.new_todo(parent.collectionIndex, taskTitle, taskBody, time)
+        parent.taskList.addItem(self.formatTask(taskTitle, taskBody, datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
 
         parent.taskTitleLineEdit.setText('')
         parent.taskBodyLineEdit.setPlainText('')
@@ -45,11 +47,11 @@ class TaskUi:
         parent.taskDeleteAllButton.clicked.connect(lambda : self.deleteAllTask(parent))
         parent.taskBackButton.setIcon(QIcon('./resources/back.png'))
         parent.taskBackButton.clicked.connect(lambda : self.hide(parent))
-        parent.taskReminderTime.setDateTime(QDateTime.currentDateTime())
+        parent.taskReminderTime.setDateTime(QDateTime.currentDateTime().addSecs(300))
 
         tasks = parent.todoManager.get_todos(parent.collectionIndex)
         for task in tasks:
-            parent.taskList.addItem(self.formatTask(task['title'], task['message']))
+            parent.taskList.addItem(self.formatTask(task['title'], task['message'], task['date_created']))
 
 
 taskUi = TaskUi()

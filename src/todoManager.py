@@ -206,17 +206,12 @@ class TodoManager:
         if collection_id > len(self.DB):
             return 1
 
-        if todo_reminder:
-            r = todo_reminder.strftime("%Y-%m-%d %H:%M:%S")
-        else:
-            r = None
-
         self.DB[collection_id]["todos"].append(
             {
                 "title": todo_title,
                 "message": todo_message,
                 "is_completed": todo_is_completed,
-                "date_reminder": r,
+                "date_reminder": todo_reminder,
                 "date_created": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             }
         )
