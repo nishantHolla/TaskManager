@@ -1,0 +1,10 @@
+argon2-cffi==23.1.0
+argon2-cffi-bindings==21.2.0
+cffi==1.16.0
+plyer==2.1.0
+pycparser==2.21
+pyqt-checkbox-list-widget==0.0.1
+pyqt-tooltip-list-widget==0.0.1
+PyQt5==5.15.10
+PyQt5-Qt5==5.15.2
+PyQt5-sip==12.13.0
