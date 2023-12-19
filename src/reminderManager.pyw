@@ -29,7 +29,6 @@ def check():
         return
 
     now = datetime.now()
-    print(user)
     user_path = database_path / f'{user}.json'
     tm = TodoManager(str(user_path))
     db = tm.get_collections()
