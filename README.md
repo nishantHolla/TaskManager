@@ -1,8 +1,7 @@
 # TaskManager
 Semester 1 mini project for CS
 
-IMPLEMENTATION DETAILS
-======================
+## Implementation details
 
 The project was implemented with modularity in mind. The frontend, backend, database are built independently
 with well defined API calls from one domain to the other which allows replacement of any of them with
@@ -12,24 +11,23 @@ On launch of the application, it follows this flow of execution:
 
 START => reminder service and (login or sign up page) => collections page => account page or task page
 
-FRONTEND
-========
+## Frontend
 
 The frontend of the application is divided into 4 main parts. These are:
-    1. UI handlers
-    2. UI layouts
-    3. Styles
-    4. Resources
+1. UI handlers
+2. UI layouts
+3. Styles
+4. Resources
 
 1. UI handlers
     These are python files that handle UI initializations and action calls to buttons and
     other interactive elements of the  UI. They also handle UI transitions from one window to the
     other. The application consists of 5 windows. They are
-        a. Login layout
-        b. Signup layout
-        c. Collections layout
-        d. Account layout
-        e. Task layout
+    - Login layout
+    - Signup layout
+    - Collections layout
+    - Account layout
+    - Task layout
 
 2. UI layouts
     These are QT files that define the layout of the UI. They are created using the Qt designer
@@ -43,13 +41,12 @@ The frontend of the application is divided into 4 main parts. These are:
 4. Resources
     This directory contains all resources used by application such as images and fonts.
 
-BACKEND
-=======
+## Backend
 
 The backend of the application is divided into 3 main parts called managers. These are:
-    1. reminderManager
-    2. sessionManager
-    3. todoManager
+1. reminderManager
+2. sessionManager
+3. todoManager
 
 1. reminderManager
     ReminderManager manages all the notification reminders of the application. It runs as a
@@ -65,8 +62,7 @@ The backend of the application is divided into 3 main parts called managers. The
     todoManager manages all the task related actions of the user. It handles task creation, task deletion,
     collection creation, collection deletion It is initialized by sessionManager on successful login.
 
-DATABASE
-========
+## Database
 
 Currently the application uses a json file to store all data of the users. This is fine for light
 weight usage of the applications with few than 100 users. But once the userbase of the application
