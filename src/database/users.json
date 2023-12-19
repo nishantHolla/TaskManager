@@ -1,9 +1,5 @@
 {
     "users": {
-        "nishant": {
-            "name": "nishant",
-            "password": "$argon2id$v=19$m=65536,t=3,p=4$moenz4pcAOJA3nTAiWMVjw$lS54TWPzNTihqcgNao69I5QTzQjCzjS/TO5LfXMbTSI"
-        }
     },
-    "current_user": "nishant"
+    "current_user": ""
 }
