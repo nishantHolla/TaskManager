@@ -5,6 +5,7 @@ from PyQt5 import QtCore
 from PyQt5.QtCore import *
 
 
+from constants import database_dir, resources_dir, style_dir
 from sessionManager import SessionManager
 from todoManager import TodoManager
 from LoginUi import loginUi
@@ -18,7 +19,7 @@ class MainWindow(qtw.QMainWindow):
         super().__init__()
         self.setFixedSize(1200,800)
 
-        self.base_path = Path('./database')
+        self.base_path = database_dir
         self.sessionManager = SessionManager()
 
         self.user = self.sessionManager.get_current_user()
@@ -59,7 +60,7 @@ class MainWindow(qtw.QMainWindow):
 
 
 styleFiles = [
-        './styles/main.css',
+        str(style_dir / 'main.css')
         ]
 
 if __name__ == '__main__':
@@ -71,7 +72,7 @@ if __name__ == '__main__':
         file.close()
 
     app = qtw.QApplication([])
-    qtg.QFontDatabase.addApplicationFont('./resources/Inter.ttf')
+    qtg.QFontDatabase.addApplicationFont(str(resources_dir / 'Inter.ttf'))
     app.setStyleSheet(style)
 
     window = MainWindow()

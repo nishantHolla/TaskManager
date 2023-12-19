@@ -1,6 +1,7 @@
 """
 User interface for the task page
 """
+from constants import layouts_dir, resources_dir
 from PyQt5.QtCore import QDateTime
 from PyQt5.QtGui import QIcon
 from PyQt5.uic import loadUi
@@ -89,7 +90,7 @@ class TaskUi:
         Return:
             None
         """
-        loadUi("./layouts/todos.ui", parent)
+        loadUi(str(layouts_dir / 'todos.ui'), parent)
         parent.taskList = CheckBoxListWidget()
         parent.taskLayout.addWidget(parent.taskList)
         parent.taskList.setStyleSheet(
@@ -99,7 +100,7 @@ class TaskUi:
         parent.taskAddButton.clicked.connect(lambda: self.addTask(parent))
         parent.taskDeleteButton.clicked.connect(lambda: self.deleteTask(parent))
         parent.taskDeleteAllButton.clicked.connect(lambda: self.deleteAllTask(parent))
-        parent.taskBackButton.setIcon(QIcon("./resources/back.png"))
+        parent.taskBackButton.setIcon(QIcon(str(resources_dir / 'back.png')))
         parent.taskBackButton.clicked.connect(lambda: parent.showWindow("collection"))
         parent.taskReminderTime.setDateTime(QDateTime.currentDateTime().addSecs(300))
 

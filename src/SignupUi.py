@@ -1,6 +1,7 @@
 """
 User interface for the signup page
 """
+from constants import resources_dir, layouts_dir
 from PyQt5.uic import loadUi
 from PyQt5.QtGui import QIcon
 from todoManager import TodoManager
@@ -74,9 +75,9 @@ class SignupUi:
         Return:
             None
         """
-        loadUi("./layouts/signup.ui", parent)
+        loadUi(str(layouts_dir / 'signup.ui'), parent)
 
-        parent.signupCloseButton.setIcon(QIcon("./resources/close.png"))
+        parent.signupCloseButton.setIcon(QIcon(str(resources_dir / 'close.png')))
         parent.signupCloseButton.clicked.connect(lambda: sys.exit(0))
         parent.signupButton.clicked.connect(lambda: self.signup(parent))
         parent.signupToLoginButton.clicked.connect(lambda: self.goToLoginPage(parent))

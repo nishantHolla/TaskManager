@@ -2,6 +2,7 @@
 User interface for the accounts page of the app
 """
 
+from constants import layouts_dir, resources_dir
 from PyQt5.uic import loadUi
 from PyQt5.QtGui import QIcon
 import sys
@@ -79,9 +80,9 @@ class AccountUi:
         Return:
             None
         """
-        loadUi("./layouts/account.ui", parent)
+        loadUi(str(layouts_dir / 'account.ui'), parent)
 
-        parent.accountBackButton.setIcon(QIcon("./resources/back.png"))
+        parent.accountBackButton.setIcon(QIcon(str(resources_dir / 'back.png')))
         parent.accountBackButton.clicked.connect(
             lambda: parent.showWindow("collection")
         )

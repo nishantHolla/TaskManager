@@ -1,6 +1,7 @@
 """
 User interface for the login page
 """
+from constants import layouts_dir, resources_dir
 from PyQt5.uic import loadUi
 from PyQt5.QtGui import QIcon
 from todoManager import TodoManager
@@ -73,9 +74,9 @@ class LoginUi:
         Return:
             None
         '''
-        loadUi("./layouts/login.ui", parent)
+        loadUi(str(layouts_dir / 'login.ui'), parent)
 
-        parent.loginCloseButton.setIcon(QIcon("./resources/close.png"))
+        parent.loginCloseButton.setIcon(QIcon(str(resources_dir / 'close.png')))
         parent.loginCloseButton.clicked.connect(lambda: sys.exit(0))
         parent.loginButton.clicked.connect(lambda: self.login(parent))
         parent.loginToSignupButton.clicked.connect(lambda: self.goToSignupPage(parent))

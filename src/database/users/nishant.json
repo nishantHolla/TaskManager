@@ -1,21 +1,17 @@
 [
     {
-        "name": "study",
+        "name": "",
+        "todos": []
+    },
+    {
+        "name": "hello",
         "todos": [
             {
-                "title": "hello",
-                "message": "world",
+                "title": "Test",
+                "message": "Test",
                 "is_completed": false,
-                "date_reminder": "2023-12-18 12:05:11",
-                "date_created": "2023-12-18 12:00:17",
-                "reminded": true
-            },
-            {
-                "title": "goodbye",
-                "message": "world",
-                "is_completed": false,
-                "date_reminder": "2023-12-18 12:29:15",
-                "date_created": "2023-12-18 12:27:32",
+                "date_reminder": "2023-12-19 20:57:55",
+                "date_created": "2023-12-19 20:57:09",
                 "reminded": true
             }
         ]

@@ -1,13 +1,9 @@
 {
     "users": {
-        "holla": {
-            "name": "holla",
-            "password": "$argon2id$v=19$m=65536,t=3,p=4$VpuzqXlvUjNY7hKuIa/GpA$Lo5Iehj+WvL2DCHW1E1E+BLQZRnQ8/WCHqGv9+6tZoI"
-        },
         "nishant": {
             "name": "nishant",
-            "password": "$argon2id$v=19$m=65536,t=3,p=4$SLvY73at1B9bdExZ6ja4mA$e5VdDS7DGfqdwUafRaGIheRwQKtF01FcuKmsgHgDTnk"
+            "password": "$argon2id$v=19$m=65536,t=3,p=4$moenz4pcAOJA3nTAiWMVjw$lS54TWPzNTihqcgNao69I5QTzQjCzjS/TO5LfXMbTSI"
         }
     },
-    "current_user": ""
+    "current_user": "nishant"
 }

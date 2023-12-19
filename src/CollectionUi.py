@@ -1,6 +1,7 @@
 """
 User interface for the collections page
 """
+from constants import resources_dir, layouts_dir
 from PyQt5.QtGui import QIcon
 from PyQt5.uic import loadUi
 
@@ -86,10 +87,10 @@ class CollectionUi:
         Return:
             None
         """
-        loadUi("./layouts/collections.ui", parent)
+        loadUi(str(layouts_dir / 'collections.ui'), parent)
 
-        parent.collectionsBackButton.setIcon(QIcon("./resources/back.png"))
-        parent.collectionsAccountButton.setIcon(QIcon("./resources/account.png"))
+        parent.collectionsBackButton.setIcon(QIcon(str(resources_dir / 'back.png')))
+        parent.collectionsAccountButton.setIcon(QIcon(str(resources_dir / 'account.png')))
         parent.collectionsAccountButton.setText(parent.user)
 
         parent.collectionsAccountButton.clicked.connect(
