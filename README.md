@@ -14,10 +14,6 @@ START => reminder service and (login or sign up page) => collections page => acc
 ## Frontend
 
 The frontend of the application is divided into 4 main parts. These are:
-1. UI handlers
-2. UI layouts
-3. Styles
-4. Resources
 
 1. UI handlers
     These are python files that handle UI initializations and action calls to buttons and
@@ -44,9 +40,6 @@ The frontend of the application is divided into 4 main parts. These are:
 ## Backend
 
 The backend of the application is divided into 3 main parts called managers. These are:
-1. reminderManager
-2. sessionManager
-3. todoManager
 
 1. reminderManager
     ReminderManager manages all the notification reminders of the application. It runs as a
