@@ -11,7 +11,7 @@ On launch of the application, it follows this flow of execution:
 
 START => reminder service and (login or sign up page) => collections page => account page or task page
 
-## Frontend
+### Frontend
 
 The frontend of the application is divided into 4 main parts. These are:
 
@@ -37,7 +37,7 @@ The frontend of the application is divided into 4 main parts. These are:
 4. Resources
     This directory contains all resources used by application such as images and fonts.
 
-## Backend
+### Backend
 
 The backend of the application is divided into 3 main parts called managers. These are:
 
@@ -55,7 +55,7 @@ The backend of the application is divided into 3 main parts called managers. The
     todoManager manages all the task related actions of the user. It handles task creation, task deletion,
     collection creation, collection deletion It is initialized by sessionManager on successful login.
 
-## Database
+### Database
 
 Currently the application uses a json file to store all data of the users. This is fine for light
 weight usage of the applications with few than 100 users. But once the userbase of the application
@@ -72,15 +72,13 @@ collection and a list of tasks present in the given collection.
 Each task is a dictionary which stores the title, message, reminder time, addition time and state
 of the task.
 
-FUTURE WORK
-===========
+## Future work
 
 1. Replace the current json database with a more robust solution like MongoDB or SQL.
 2. Implement forgot password action.
 3. Implement multi device notification service.
 
-REFERENCES
-==========
+## Reference
 
 1. PESU academy notes.
 2. Open source software such as pyqt-checkbox-list-widget
