@@ -58,7 +58,7 @@ The backend of the application is divided into 3 main parts called managers. The
 ### Database
 
 Currently the application uses a json file to store all data of the users. This is fine for light
-weight usage of the applications with few than 100 users. But once the userbase of the application
+weight usage of the applications with fewer than 100 users. But once the userbase of the application
 grows, switching to a dedicated database service such as SQL is preferred.
 
 The application has a users.json file which stores all the usernames and their hashed passwords.
