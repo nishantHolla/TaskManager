@@ -82,4 +82,4 @@ of the task.
 
 1. PESU academy notes.
 2. Open source software such as pyqt-checkbox-list-widget
-3. Module documentation of argon2 and player
+3. Module documentation of argon2 and plyer
